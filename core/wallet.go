@@ -14,5 +14,11 @@ type Wallet struct {
 func createWallet() Wallet {
 	sha := sha256.New()
 	sha.Write([]byte(time.Now().String()))
-	return Wallet{walletHash: base64.URLEncoding.EncodeToString(sha.Sum(nil)), balance: 0}
+	return Wallet{walletHash: base64.URLEncoding.EncodeToString(sha.Sum(nil)), balance: 100}
+}
+func (self *Wallet) decreaseAmount(amount int) {
+	self.balance -= amount
+}
+func (self *Wallet) increaseAmount(amount int) {
+	self.balance += amount
 }
