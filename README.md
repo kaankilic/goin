@@ -6,3 +6,6 @@ Please use Github for reporting bugs, and making comments or suggestions
 ## License
 Goin is open-sourced software licensed under the [MIT](http://opensource.org/licenses/MIT)
 
+## Usage
+You can run the following code in the shell.
+`go run main.go transaction.go wallet.go block.go blockchain.go`
