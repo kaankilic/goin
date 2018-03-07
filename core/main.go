@@ -7,6 +7,8 @@ import (
 )
 
 func main() {
+	bc := createBlockchain()
+	bc.createGenesisBlock()
 	transactions := []Transaction{}
 	w1 := createWallet()
 	w2 := createWallet()
@@ -21,8 +23,12 @@ func main() {
 	w1.decreaseAmount(7)
 	transactions = append(transactions, createTransaction(w1, w2, 7))
 	fmt.Println("transactions length:" + strconv.Itoa(len(transactions)))
-	block := createBlock(1, 1, time.Now(), transactions, "0")
-	fmt.Println(block)
+	block := createBlock(1, 1, time.Now(), transactions)
+	bc.addBlock(block)
+	bc.addBlock(block)
+	bc.addBlock(block)
+	bc.addBlock(block)
 	fmt.Println("w1 balance:" + strconv.Itoa(w1.balance))
 	fmt.Println("w2 balance:" + strconv.Itoa(w2.balance))
+	fmt.Println("is chain valid:" + strconv.FormatBool(bc.isValid()))
 }
